@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const path = require('path'); 
+const { clear } = require('console');
 
 // Define el esquema de GraphQL
 const typeDefs = gql`
@@ -13,6 +14,7 @@ const typeDefs = gql`
     helloMarvin(message:String!): String
 
      
+    hellovictor(message:String!): String
   }
 `;
 
@@ -36,6 +38,9 @@ const resolvers = {
     },
     helloMar: (_, { message }) => {
       return `¡Hola, ${message}! Un saludo por parte de marvin `;
+      },
+    hellovictor: (_, { message }) => {
+      return `¡Hola, ${message}! Un saludo por parte de victor `;
     },
   },
 };
@@ -68,4 +73,3 @@ async function startApolloServer() {
 }
 
 startApolloServer();
-
